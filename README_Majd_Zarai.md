@@ -60,7 +60,7 @@ This solution fulfills all required tasks and includes several bonus features fo
 ### Install Requirements
 Use the following to install all required packages:
 ```bash
-pip install -r requirements.txt
+pip install -r Majd_requirements.txt
 ```
 ---
 
