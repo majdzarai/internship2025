@@ -25,11 +25,13 @@ This project addresses all required objectives and adds several bonus capabiliti
 
 ## 🗂️ Project Structure
 
-.
+
 ├── Majd_Zarai_text_extractor/ # Modular extractors (PDF, DOCX, XLSX)
+
 │ ├── pdf_handler.py
 │ ├── docx_handler.py
 │ └── excel_handler.py
+
 
 ├── uploads/ # Input documents
 ├── extracted_texts/ # Output text + images
