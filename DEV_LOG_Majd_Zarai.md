@@ -1,11 +1,11 @@
-# 🧠 DEV_LOG_Majd_Zarai.md  
+#  DEV_LOG_Majd_Zarai.md  
 DYDON AI – Internship 2025 Submission
 
 This development log outlines the architecture, design rationale, implementation process, and key technologies behind my solution for the DYDON AI Internship 2025 challenge.
 
 ---
 
-## 📌 Objective
+##  Objective
 
 Design and implement a Python-based system that:
 - Extracts text from `.pdf`, `.docx`, and `.xlsx` documents
@@ -16,7 +16,7 @@ Design and implement a Python-based system that:
 
 ---
 
-## 🧠 Solution Architecture
+##  Solution Architecture
 
 I structured the project around a **modular pipeline**, where each file type is handled by a dedicated extractor script under the `Majd_Zarai_text_extractor/` directory:
 
@@ -44,21 +44,21 @@ I structured the project around a **modular pipeline**, where each file type is 
 
 ---
 
-## 🌐 Front-End – `majd_front.py`
+##  Front-End – `majd_front.py`
 
 To complement the CLI, I developed a clean and intuitive **Streamlit front-end** for real-time interaction.
 
 ### Features:
-- 📂 Drag-and-drop file upload
-- 📝 Live preview of extracted text
-- 🖼️ Button to toggle and preview images (per-page thumbnails)
-- 💾 Download button for extracted `.txt` results
-- 🎨 Custom gradient background (red-to-white) and modern card styling
-- ✅ Fully responsive layout and optimized UX
+-  Drag-and-drop file upload
+-  Live preview of extracted text
+-  Button to toggle and preview images (per-page thumbnails)
+-  Download button for extracted `.txt` results
+-  Custom gradient background (red-to-white) and modern card styling
+-  Fully responsive layout and optimized UX
 
 ---
 
-## 🏗️ Design Considerations
+##  Design Considerations
 
 - **Modularity**: Each file type is handled in isolation for maintainability and testability.
 - **Clarity**: All functions include docstrings and inline comments.
@@ -68,7 +68,7 @@ To complement the CLI, I developed a clean and intuitive **Streamlit front-end**
 
 ---
 
-## 🧩 Dependencies Used
+##  Dependencies Used
 
 All packages are listed in `requirements.txt`. Core dependencies:
 
@@ -85,11 +85,11 @@ All packages are listed in `requirements.txt`. Core dependencies:
 
 ---
 
-## 📦 Folder Output Example
+##  Folder Output Example
 
 When a user uploads a file named `invoice.pdf`, this is what the output structure looks like:
 
-text ```
+```text
 extracted_texts/
 ├── majd_zarai_invoice_cleaned.txt
 └── majd_extracted_images_from_pdf/
@@ -97,3 +97,44 @@ extracted_texts/
 ├── page1_img1.png
 ├── page2_img2.png
 └── ...
+```
+
+---
+
+##  Testing and Validation
+
+I validated the system using:
+- Native PDFs with machine-readable text
+- Scanned PDFs to confirm OCR fallback
+- DOCX files containing both text and tables
+- Multi-sheet Excel files with mixed content
+- PDFs with embedded figures/images
+
+---
+
+##  Bonus Features Implemented
+
+| Feature                        | Description |
+|-------------------------------|-------------|
+| ✅ OCR fallback               | If no text, fallback to high-res OCR (300 DPI) |
+| ✅ Image extraction           | All PDF images saved and previewed in UI |
+| ✅ Front-end interface        | Gradient UI with upload + preview |
+| ✅ User-friendly logging      | Structured logs for success and failure |
+| ✅ Output consistency         | All filenames include my full name and are organized cleanly |
+
+---
+
+##  Final Notes
+
+This project reflects my ability to:
+- Write modular, clear, and production-grade Python
+- Integrate OCR and file I/O workflows
+- Design user-friendly front-end UIs
+- Follow instructions and go above expectations
+
+Thank you for the opportunity to apply to DYDON AI.  
+I hope this project demonstrates both my technical capability and attention to real-world usability.
+
+— **Majd Zarai**
+
+
