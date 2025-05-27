@@ -1,96 +1,72 @@
-#  Majd Zarai – DYDON AI Internship 2025 Submission
+# DYDON AI – Internship 2025 Application
 
-Welcome to my submission for the **DYDON AI Summer Internship 2025**.
+Welcome to the **DYDON AI Summer Internship 2025** repository!  
+We are excited to announce that we are now accepting applications for our summer internship program. 🚀
 
-I’ve developed a robust and extensible solution to extract structured content from `.pdf`, `.docx`, and `.xlsx` files — with enhancements like OCR fallback for scanned PDFs, image extraction, and a Streamlit-powered web interface.
-
----
-
-##  Project Overview
-
-This solution fulfills all required tasks and includes several bonus features for better performance, usability, and extensibility:
-
-| Capability                                      | Status   |
-|------------------------------------------------|----------|
-|  Text extraction from `.pdf`                 | ✔️       |
-|  OCR fallback for scanned PDFs               | ✔️       |
-|  `.docx` parsing (paragraphs & tables)       | ✔️       |
-|  `.xlsx` parsing (multi-sheet, formatting)   | ✔️       |
-|  Embedded image extraction from PDFs         | ✔️       |
-|  Modular architecture (clean file separation)| ✔️       |
-|  CLI script & web UI                         | ✔️       |
-|  Frontend: gradient design + image viewer    | ✔️       |
+Instead of the usual process of sending CVs and waiting, we want to **simplify and speed things up**.  
+If you're truly interested in joining us, let your code speak.
 
 ---
 
+## 📝 The Task
 
-## 📂 Project Structure
+Your mission is to implement a **clean, efficient, and well-structured Python function** that does the following:
 
+1. Iterates through all files in the folder `uploads/`
+2. Detects and processes files of the following types:
+   - `.pdf`
+   - `.docx`
+   - `.xlsx`
+3. Extracts the full text from each file.
+4. For PDFs that do not contain extractable text, apply OCR using **Tesseract OCR** via its Python wrapper (`pytesseract`).
 
-
-```text
-.
-├── Majd_Zarai_text_extractor/
-│   ├── pdf_handler.py
-│   ├── docx_handler.py
-│   └── excel_handler.py
-│
-├── uploads/
-├── extracted_texts/
-│   ├── majd_zarai_<filename>_cleaned.txt
-│   └── majd_extracted_images_from_pdf/
-│       └── <pdf_name>_images/
-│           ├── page1_img1.png
-│           └── ...
-│
-├── extract_text_Majd_Zarai.py
-├── majd_front.py
-├── Majd_assets/
-├── DEV_LOG_Majd_Zarai.md
-├── requirements.txt
-└── README.md
-
-```
+You **do not** need to apply any AI or NLP processing to the extracted text — the goal is to prepare the content for later stages in our pipeline.
 
 ---
 
+## ✅ Requirements
 
-## 🛠️ How to Run the Application
-
-### Install Requirements
-Use the following to install all required packages:
-```bash
-pip install -r requirements.txt
-```
----
-
-### ▶️ CLI Mode
-
-To run the text and image extraction from all documents inside the `uploads/` directory, open a terminal and run:
-
-```bash
-python extract_text_Majd_Zarai.py
-```
-
-This will create output .txt files and image folders in the extracted_texts/ directory
+- Python 3.8+
+- Use well-established libraries such as:
+  - `pytesseract`
+  - `pdfplumber` or `PyMuPDF`
+  - `python-docx`
+  - `openpyxl`
+- Your solution should handle errors gracefully and log any problems.
+- Focus on **clarity**, **performance**, and **extensibility**.
 
 ---
 
-### ▶️ Streamlit Web Interface
+## 📬 How to Apply
 
-To launch the user-friendly web UI, run:
+- Fork this repository.
+- Add your solution in a file called `extract_text_[your_full_name].py`.
+- Include a brief `DEV_LOG_[your_full_name].md` in your fork explaining your approach and any dependencies.
+- if you want to deploy more than one file/folder, please add your full name to the name of the file/folder
+- Submit your repo by creating a **pull request** to this repository.
 
-```bash
-streamlit run majd_front.py
-```
+---
 
-Once the browser opens, you can:
- Upload .pdf, .docx, or .xlsx files via drag-and-drop
- Instantly preview extracted text in a large text box
- Download cleaned text with a single click
- ---
+## 🎯 Evaluation Criteria
 
- ![App Preview](Majd_assets/majd_home.png)
- ---
- ![App Preview](Majd_assets/majd_extract.png)
+We’ll evaluate submissions based on:
 
+- Code quality and structure
+- Elegance and simplicity
+- Performance and file handling
+- Error handling and logging
+- Creativity in solving the OCR fallback
+
+The most **elegant and performative solution** will be selected for the internship.
+
+---
+
+## ❗ Final Notes
+
+- This internship is **paid** and **hands-on** – you’ll work directly with our AI/NLP team.
+- We’re looking for **curious, committed, and technically sharp minds**.
+- You don’t need to send us your CV — let your code do the talking.
+
+Good luck and have fun!
+
+— The DYDON AI Team
