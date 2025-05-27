@@ -1,96 +1,99 @@
-#  Majd Zarai – DYDON AI Internship 2025 Submission
+# 🧠 DEV_LOG_Majd_Zarai.md  
+DYDON AI – Internship 2025 Submission
 
-Welcome to my submission for the **DYDON AI Summer Internship 2025**.
-
-I’ve developed a robust and extensible solution to extract structured content from `.pdf`, `.docx`, and `.xlsx` files — with enhancements like OCR fallback for scanned PDFs, image extraction, and a Streamlit-powered web interface.
-
----
-
-##  Project Overview
-
-This solution fulfills all required tasks and includes several bonus features for better performance, usability, and extensibility:
-
-| Capability                                      | Status   |
-|------------------------------------------------|----------|
-|  Text extraction from `.pdf`                 | ✔️       |
-|  OCR fallback for scanned PDFs               | ✔️       |
-|  `.docx` parsing (paragraphs & tables)       | ✔️       |
-|  `.xlsx` parsing (multi-sheet, formatting)   | ✔️       |
-|  Embedded image extraction from PDFs         | ✔️       |
-|  Modular architecture (clean file separation)| ✔️       |
-|  CLI script & web UI                         | ✔️       |
-|  Frontend: gradient design + image viewer    | ✔️       |
+This development log outlines the architecture, design rationale, implementation process, and key technologies behind my solution for the DYDON AI Internship 2025 challenge.
 
 ---
 
+## 📌 Objective
 
-## 📂 Project Structure
-
-
-
-```text
-.
-├── Majd_Zarai_text_extractor/
-│   ├── pdf_handler.py
-│   ├── docx_handler.py
-│   └── excel_handler.py
-│
-├── uploads/
-├── extracted_texts/
-│   ├── majd_zarai_<filename>_cleaned.txt
-│   └── majd_extracted_images_from_pdf/
-│       └── <pdf_name>_images/
-│           ├── page1_img1.png
-│           └── ...
-│
-├── extract_text_Majd_Zarai.py
-├── majd_front.py
-├── Majd_assets/
-├── DEV_LOG_Majd_Zarai.md
-├── requirements.txt
-└── README.md
-
-```
+Design and implement a Python-based system that:
+- Extracts text from `.pdf`, `.docx`, and `.xlsx` documents
+- Applies OCR to scanned PDFs
+- Is modular, readable, and production-ready
+- Includes logging, error handling, and extensibility
+- Optionally includes a frontend for user interaction
 
 ---
 
+## 🧠 Solution Architecture
 
-## 🛠️ How to Run the Application
+I structured the project around a **modular pipeline**, where each file type is handled by a dedicated extractor script under the `Majd_Zarai_text_extractor/` directory:
 
-### Install Requirements
-Use the following to install all required packages:
-```bash
-pip install -r requirements.txt
-```
+### 1. `pdf_handler.py`
+- ✅ Extracts text from PDFs using `PyMuPDF` (fitz)
+- ✅ If no machine-readable text exists, applies `pytesseract` OCR on each page using `pdf2image`
+- ✅ Extracts embedded images using `fitz.get_page_images()` and stores them by page in a dedicated folder
+
+### 2. `docx_handler.py`
+- ✅ Parses paragraphs and tables using `python-docx`
+- ✅ Ensures empty text is filtered out
+- ✅ Optional support prepared for reading DOCX metadata
+
+### 3. `excel_handler.py`
+- ✅ Uses `openpyxl` to parse all sheets
+- ✅ Cleans and formats rows with tab delimiters
+- ✅ Skips empty rows for concise output
+
+### 4. `extract_text_Majd_Zarai.py`
+- ✅ CLI pipeline that:
+  - Iterates over files in the `uploads/` folder
+  - Delegates to the correct handler
+  - Saves output `.txt` files with my name in the filename
+  - Logs all actions and errors
+
 ---
 
-### ▶️ CLI Mode
+## 🌐 Front-End – `majd_front.py`
 
-To run the text and image extraction from all documents inside the `uploads/` directory, open a terminal and run:
+To complement the CLI, I developed a clean and intuitive **Streamlit front-end** for real-time interaction.
 
-```bash
-python extract_text_Majd_Zarai.py
-```
-
-This will create output .txt files and image folders in the extracted_texts/ directory
+### Features:
+- 📂 Drag-and-drop file upload
+- 📝 Live preview of extracted text
+- 🖼️ Button to toggle and preview images (per-page thumbnails)
+- 💾 Download button for extracted `.txt` results
+- 🎨 Custom gradient background (red-to-white) and modern card styling
+- ✅ Fully responsive layout and optimized UX
 
 ---
 
-### ▶️ Streamlit Web Interface
+## 🏗️ Design Considerations
 
-To launch the user-friendly web UI, run:
+- **Modularity**: Each file type is handled in isolation for maintainability and testability.
+- **Clarity**: All functions include docstrings and inline comments.
+- **Logging**: All major actions and exceptions are logged to inform the user.
+- **Extensibility**: New formats or NLP processing steps could be added with minimal changes.
+- **Naming conventions**: Output files are saved as `majd_zarai_<filename>_cleaned.txt` per DYDON requirements.
 
-```bash
-streamlit run majd_front.py
-```
+---
 
-Once the browser opens, you can:
- Upload .pdf, .docx, or .xlsx files via drag-and-drop
- Instantly preview extracted text in a large text box
- Download cleaned text with a single click
- ---
+## 🧩 Dependencies Used
 
- ![App Preview](Majd_assets/majd_home.png)
- ---
- ![App Preview](Majd_assets/majd_extract.png)
+All packages are listed in `requirements.txt`. Core dependencies:
 
+| Library         | Purpose                                   |
+|-----------------|--------------------------------------------|
+| `PyMuPDF`       | PDF parsing (text and image)              |
+| `pytesseract`   | OCR for scanned PDFs                      |
+| `pdf2image`     | Convert PDF pages to images for OCR       |
+| `openpyxl`      | Excel file parsing                        |
+| `python-docx`   | DOCX file parsing                         |
+| `Pillow`        | Image manipulation                        |
+| `streamlit`     | Front-end UI                              |
+| `tqdm`          | Optional progress bar for CLI             |
+
+---
+
+## 📦 Folder Output Example
+
+When a user uploads a file named `invoice.pdf`, this is what the output structure looks like:
+
+text ```
+extracted_texts/
+├── majd_zarai_invoice_cleaned.txt
+└── majd_extracted_images_from_pdf/
+└── invoice_images/
+├── page1_img1.png
+├── page2_img2.png
+└── ...
